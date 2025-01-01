@@ -16,9 +16,9 @@ A WordPress plugin that provides a visual dashboard for astronomy and astrophoto
 - Key metrics for astronomy:
   - Cloud cover
   - Seeing conditions
-  - Wind speed
+  - Wind speed 10m above ground
   - Humidity
-  - Temperature
+  - Temperature 2m above grounbd
   - Dew point
 - Responsive design for mobile and desktop
 - Timeline view for tracking conditions over multiple days
@@ -60,10 +60,12 @@ The final seeing score (0-100) combines these factors, providing a comprehensive
 Add the dashboard to any post or page using the shortcode:
 ```shortcode
 [astro_weather_dashboard]
+```
 
 You can also specify default coordinates:
 ```shortcode
 [astro_weather_dashboard latitude="45.5155" longitude="-122.6789"]
+```
 
 ## Requirements
 
@@ -74,7 +76,7 @@ Modern web browser with JavaScript enabled
 ## Credits
 This plugin uses the following services and libraries:
 
-Open-Meteo API for weather data
-OpenStreetMap Nominatim for geocoding
-React for the timeline view
-jQuery UI for controls
+- Open-Meteo API for weather data
+- OpenStreetMap Nominatim for geocoding
+- React for the timeline view
+- jQuery UI for controls
