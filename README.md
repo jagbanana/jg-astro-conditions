@@ -5,7 +5,7 @@ A WordPress plugin that provides a visual dashboard for astronomy and astrophoto
 ## Screenshot
 
 ### Main Dashboard
-![The main dashboard showing weather conditions](screenshots/dashboard.png)
+![The main dashboard showing weather conditions](screenshots/dashboard.35.png)
 *The dashboard displays current conditions with color-coded indicators for cloud cover, seeing, wind, and humidity.*
 
 ## Features
@@ -18,7 +18,7 @@ A WordPress plugin that provides a visual dashboard for astronomy and astrophoto
   - Seeing conditions
   - Wind speed 10m above ground
   - Humidity
-  - Temperature 2m above grounbd
+  - Temperature 2m above ground
   - Dew point
 - Responsive design for mobile and desktop
 - Timeline view for tracking conditions over multiple days

@@ -152,35 +152,6 @@
     margin: 10px 0;
 }
 
-.time-slider {
-    width: 100%;
-    background-color: #333;
-    height: 4px;
-    -webkit-appearance: none;
-    appearance: none;
-    outline: none;
-    border-radius: 2px;
-}
-
-.time-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    background: #2563eb;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.time-slider::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    background: #2563eb;
-    border-radius: 50%;
-    cursor: pointer;
-    border: none;
-}
-
 .time-display {
     text-align: center;
     color: #fff;
@@ -248,6 +219,16 @@
     transform: translate(-50%, -50%);
     font-size: 0.8em;
     color: #fff;
+    text-align: center;
+    line-height: 1.2;
+    width: 100%;
+}
+
+.rating-dial .rating-value .rating-descriptor {
+    display: block;
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-top: 2px;
 }
 
 /* Rating colors */

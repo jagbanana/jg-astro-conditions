@@ -20,23 +20,15 @@ jQuery(document).ready(function($) {
         );
     }
     
-    // Initialize time display with current value
-    const timeSlider = $('.time-slider');
-    timeSlider.val(new Date().getHours());
-    updateTimeDisplay(timeSlider.val());
-
-    // Time slider event handler
-    timeSlider.on('input', function() {
-        updateTimeDisplay(this.value);
-        updateDisplayForHour(parseInt(this.value));
+    // Initialize time slider
+    $('.time-slider').slider({
+        min: 0,
+        max: 23,
+        value: new Date().getHours(),
+        slide: function(event, ui) {
+            updateDisplayForHour(ui.value);
+        }
     });
-
-    function updateTimeDisplay(hour) {
-        const hourNum = parseInt(hour);
-        const period = hourNum >= 12 ? 'PM' : 'AM';
-        const hour12 = hourNum % 12 || 12;
-        $('.time-display').text(`${hour12}:00 ${period}`);
-    }
 
     function convertTemp(temp, toImperial) {
         return toImperial ? (temp * 9/5) + 32 : temp;
@@ -108,8 +100,13 @@ function updateBar(type, value) {
         .css('stroke-dasharray', `${circumference} ${circumference}`)
         .css('stroke-dashoffset', offset);
         
-    // Update the rating display to show the normalized positive value
-    $conditionBox.find('.rating-value').text(Math.round(Math.abs(rating)));
+    // Update the rating display to show both value and descriptor
+    const ratingDescriptor = rating >= 80 ? 'Great' : 
+                            rating >= 50 ? 'Good' : 
+                            rating >= 0 ? 'Marginal' : 'Poor';
+    
+    $conditionBox.find('.rating-value')
+        .html(`${Math.round(Math.abs(rating))}<br><span class="rating-descriptor">${ratingDescriptor}</span>`);
     $conditionBox.find('.value').text(displayValue + displayUnit);
 }
     
@@ -129,7 +126,7 @@ function updateBar(type, value) {
             success: function(response) {
                 if (response.success) {
                     weatherData = response.data.hourly;
-                    updateDisplayForHour(parseInt($('.time-slider').val()));
+                    updateDisplayForHour($('.time-slider').slider('value'));
                     
                     // Initialize timeline with the weather data
                     const timelineContainer = document.querySelector('.astro-weather-timeline');
@@ -194,7 +191,7 @@ function updateBar(type, value) {
     
     $('input[name="units"]').on('change', function() {
         currentUnits = $(this).val();
-        updateDisplayForHour(parseInt($('.time-slider').val()));
+        updateDisplayForHour($('.time-slider').slider('value'));
     });
     
     $('.detect-location').on('click', function() {
