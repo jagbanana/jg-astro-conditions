@@ -17,7 +17,7 @@ A WordPress plugin that provides a visual dashboard for astronomy and astrophoto
 - Responsive design for mobile and desktop
 - Timeline view for tracking conditions over multiple days
 
-##Seeing Conditions Calculation
+## Seeing Conditions Calculation
 
 The plugin calculates astronomical seeing conditions using a weighted algorithm that considers multiple factors:
 
