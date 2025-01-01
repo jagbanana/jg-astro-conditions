@@ -10,12 +10,37 @@ A WordPress plugin that provides a visual dashboard for astronomy and astrophoto
 - Key metrics for astronomy:
   - Cloud cover
   - Seeing conditions
-  - Wind speed
+  - Wind speed 10m above ground
   - Humidity
-  - Temperature
+  - Temperature 2m above grounbd
   - Dew point
 - Responsive design for mobile and desktop
 - Timeline view for tracking conditions over multiple days
+
+##Seeing Conditions Calculation
+
+The plugin calculates astronomical seeing conditions using a weighted algorithm that considers multiple factors:
+
+-  Temperature-Dew Point Spread (30% weight)
+  - Larger differences between temperature and dew point generally indicate better seeing
+  - Score improves as the spread increases, up to a maximum beneficial difference
+  - Helps predict atmospheric stability and moisture content
+- Wind Speed (30% weight)
+  - Optimal conditions: 5-10 km/h
+  - Below 5 km/h: Score reduces (insufficient air mixing)
+  - Above 10 km/h: Score reduces more sharply (turbulence)
+  - Above 20 km/h: Poor conditions for observation
+- Humidity Impact (20% weight)
+  - Lower humidity generally correlates with better seeing
+  - Score decreases as humidity increases
+  - High humidity can indicate potential for dew formation on equipment
+- Temperature Stability (20% weight)
+  - Measures the rate of temperature change
+  - Smaller changes indicate more stable air
+  - Each degree of change per hour reduces the score
+  - Rapid temperature changes often indicate unstable air masses
+
+The final seeing score (0-100) combines these factors, providing a comprehensive assessment of likely observing conditions. Values above 80 indicate potentially excellent seeing conditions when combined with clear skies and low humidity.
 
 ## Installation
 
