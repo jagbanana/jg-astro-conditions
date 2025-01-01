@@ -29,10 +29,12 @@ A WordPress plugin that provides a visual dashboard for astronomy and astrophoto
 Add the dashboard to any post or page using the shortcode:
 ```shortcode
 [astro_weather_dashboard]
+```
 
 You can also specify default coordinates:
 ```shortcode
 [astro_weather_dashboard latitude="45.5155" longitude="-122.6789"]
+```
 
 ## Requirements
 
