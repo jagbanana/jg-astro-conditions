@@ -45,7 +45,7 @@ Modern web browser with JavaScript enabled
 ## Credits
 This plugin uses the following services and libraries:
 
-Open-Meteo API for weather data
-OpenStreetMap Nominatim for geocoding
-React for the timeline view
-jQuery UI for controls
+- Open-Meteo API for weather data
+- OpenStreetMap Nominatim for geocoding
+- React for the timeline view
+- jQuery UI for controls
