@@ -3,14 +3,26 @@
  * Plugin Name: JGAstroConditions
  * Description: Display astronomy viewing conditions with a visual dashboard
  * Author: jaglab
- * Version: 0.35
+ * Version: 0.36
  */
 
 // Prevent direct access
 if (!defined('ABSPATH')) exit;
 
 // Define the plugin version in one place
-define('ASTRO_WEATHER_VERSION', '0.35');
+define('ASTRO_WEATHER_VERSION', '0.36');
+
+function init_astro_weather_timezone() {
+    // Get WordPress timezone setting
+    $timezone = get_option('timezone_string');
+    if (empty($timezone)) {
+        // If timezone string is empty, try offset
+        $offset = get_option('gmt_offset');
+        $timezone = timezone_name_from_abbr('', $offset * 3600, 0);
+    }
+    date_default_timezone_set($timezone);
+}
+add_action('init', 'init_astro_weather_timezone');
 
 function register_astro_weather_scripts() {
     wp_enqueue_style(
@@ -239,19 +251,19 @@ function astro_weather_dashboard_shortcode($atts) {
                                 <div class="time-controls-top">
                                 <select class="day-picker">
                                     <?php
-                                    $today = date('Y-m-d'); // Get today's actual date
-                                    for ($i = 0; $i < 7; $i++) {
-                                        $date = date('Y-m-d', strtotime("$today +$i days"));
-                                        $display = date('l, M j', strtotime("$today +$i days"));
-                                        
-                                        // Add "Today" or "Tomorrow" label for first two days
-                                        if ($i == 0) {
-                                            $display = "Today, " . date('M j', strtotime($today));
-                                        } else if ($i == 1) {
-                                            $display = "Tomorrow, " . date('M j', strtotime("$today +1 day"));
+                                    // In the shortcode function
+                                        $today = current_time('Y-m-d'); // Use WordPress current_time instead of date()
+                                        for ($i = 0; $i < 7; $i++) {
+                                            $date = date('Y-m-d', strtotime("$today +$i days"));
+                                            $display = date('l, M j', strtotime("$today +$i days"));
+                                            
+                                            if ($i == 0) {
+                                                $display = "Today, " . date('M j', strtotime($today));
+                                            } else if ($i == 1) {
+                                                $display = "Tomorrow, " . date('M j', strtotime("$today +1 day"));
+                                            }
+                                            echo "<option value='$date'>$display</option>";
                                         }
-                                        echo "<option value='$date'>$display</option>";
-                                    }
                                     ?>
                                 </select>
                                     <div class="units-toggle">
