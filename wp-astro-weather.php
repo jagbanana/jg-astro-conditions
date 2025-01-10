@@ -3,14 +3,14 @@
  * Plugin Name: JGAstroConditions
  * Description: Display astronomy viewing conditions with a visual dashboard
  * Author: jaglab
- * Version: 0.36
+ * Version: 0.368
  */
 
 // Prevent direct access
 if (!defined('ABSPATH')) exit;
 
 // Define the plugin version in one place
-define('ASTRO_WEATHER_VERSION', '0.36');
+define('ASTRO_WEATHER_VERSION', '0.368');
 
 function init_astro_weather_timezone() {
     // Get WordPress timezone setting
@@ -276,7 +276,7 @@ function astro_weather_dashboard_shortcode($atts) {
                                     </div>
                                 </div>
                                 <div class="time-slider-container">
-                                    <div class="time-slider"></div>
+                                    <input type="range" class="time-slider" min="0" max="23" value="0" step="1">
                                     <div class="time-display"></div>
                                 </div>
                             </div>
