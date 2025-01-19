@@ -1,16 +1,16 @@
 <?php
 /**
- * Plugin Name: JGAstroConditions
+ * Plugin Name: JG Astro Conditions
  * Description: Display astronomy viewing conditions with a visual dashboard
  * Author: jaglab
- * Version: 0.368
+ * Version: 1
  */
 
 // Prevent direct access
 if (!defined('ABSPATH')) exit;
 
 // Define the plugin version in one place
-define('ASTRO_WEATHER_VERSION', '0.368');
+define('ASTRO_WEATHER_VERSION', '1.001');
 
 function init_astro_weather_timezone() {
     // Get WordPress timezone setting
