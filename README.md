@@ -4,6 +4,10 @@ A standalone React astronomy-weather dashboard for checking observing conditions
 
 Live version: <https://jaglab.org/astro-conditions>
 
+## Screenshot
+
+![JG Astro Conditions dashboard](images/astro-conditions.png)
+
 ## Features
 
 - Search by city, address, landmark, or observing site
